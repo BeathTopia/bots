@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home | <%= client.user.username %></title>
+  <link rel="shortcut icon" href="<%=client.user.displayAvatarURL()%>">
+  <meta charset="utf-8">
+  <meta name="og:title" content="HOME | <%=client.user.username%>">
+  <meta name="og:image" content="<%=client.user.displayAvatarURL()%>">
+  <meta name="og:description" content="Website official <%=client.user.username%>">
+  <meta property="og:site_name" content="Growtopia-bots">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="/"><%= client.user.username %></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li><a href="/suggest"><span class="glyphicon glyphicon-comment"></span> Suggestions</a></li>
+        <li><a href="/shop"><span class="glyphicon glyphicon-shopping-cart"></span> Shop</a></li>
+        <li><a href="/discord"><i class='fab fa-discord'></i> Discord Server</a></li>
+        <li><a href="<%= user ? "/logout" : "/login" %>"><span class="glyphicon glyphicon-log-in"></span> <%= user ? "Logout" : "Login" %></a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  
+  <body>
+<div class="container">
+  <div class="panel panel-default" id='1'>
+    <div class="panel-body">
+      <center><img src="<%= client.user.displayAvatarURL() %>" style="border-radius: 58%; border: 5px solid black;"></center>
+      <h3>Name: <b><%= client.user.username %></b></h3>
+      <h3>Prefix: <b><%= data.prefix %></b></h3>
+      <h3>Guild: <b><%= client.guilds.cache.size %> guilds</b></h3>
+      <h3>Users: <b><%= client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString() %> users</b></h3>
+      <h3>Memory: <b><%= (process.memoryUsage().heapUsed / 1204 / 1204).toFixed(2) %> MB</b></h3>
+    </div>
+  </div>
+  </div>
+    
+    <h1>CO-OWNER</h1>
+    
+    <div class="container">
+        <%-
+client.guilds.cache.get("713203429744443475").members.cache.filter(m => m._roles.includes("713626430872748063")).map(prop =>`
+    
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center><img src="${client.users.cache.get(prop.user.id).displayAvatarURL()}" style="border: 5px solid black; border-radius: 58%;" class="rounded-circle z-depth-1"
+          alt="Sample avatar"></center>
+      
+      <center><p class="text-uppercase" style="color:${prop.displayHexColor}"><strong>Co-Owner</strong></p></center>
+      <h3 class="font-weight-bold mt-4 mb-2">${prop.user.tag}</h3>
+      <h3 class="font-weight-bold mt-4 mb-2">${db.get(`decs_${prop.user.id}`) || "Nothing"}</h4>
+    </div>
+    </div>
+    <!-- Grid column -->
+`).join(" ")
+%>
+      </div>
+    
+    <h1>MODERATOR</h1>
+    
+    <div class="container">
+      <%-
+      client.guilds.cache.get("713203429744443475").members.cache.filter(m => m._roles.includes("713494057388605541")).map(prop =>`
+      
+      <div class="panel panel-default">
+      <div class="panel-body">
+      <center><img src="${client.users.cache.get(prop.user.id).displayAvatarURL()}" style="border: 5px solid black; border-radius: 58%;" class="rounded-circle z-depth-1"
+      alt="sample avatar"></center>
+      
+      <center><p class="text-uppercase" style="color:${prop.displayHexColor}"><strong>Moderator</strong></p></center>
+      <h3 class="font-weight-bold mt-4 mb-2">${prop.user.tag}</h3>
+      <h4 class="font-weight-bold mt-4 mb-2">${db.get(`decs_${prop.user.id}`) || "Nothing"}</h4>
+      </div>
+      </div>
+      `).join(" ")
+      %>
+      </div>
+
+</body>
+</html> 
+  
+<style>
+  h1 {
+    text-shadow:0px 0px 5px 0px black;
+    text-align: center;
+    font-family:bold;
+  }
+  
+  h4 {
+    text-align: center;
+    font-family: bold;
+  }
+  
+  h3 {
+    text-align: center;
+  }
+  
+  h2 {
+    text-align: center;
+    font-family: Serif;
+  }
+  
+ .panel-body{
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  body {
+    position:relative;
+    background:#f2f2f2
+  }
+  
+  .polaroid {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+imgs {
+  width: 100%
+  }
+
+.a {
+  text-align: center;
+  padding: 10px 20px;
+}
+</style>

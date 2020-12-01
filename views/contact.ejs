@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Contact | <%= client.user.username %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script data-ad-client="ca-pub-5902686510993379" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" href="<%= client.user.displayAvatarURL() %>">
+</head>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="/">Suggestions!</a>
+    </div>
+     <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li class='active'><a href="/suggest"><span class="glyphicon glyphicon-comment"></span> Suggestions</a></li>
+        <li><a href="/shop"><cpan class="glyphicon glyphicon-shopping-cart"></cpan> Shop</a></li>
+        <li><a href="<%= user ? "/logout" : "/login" %>"><span class="glyphicon glyphicon-log-in"></span> <%= user ? "Logout" : "Login" %></a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  
+  <body>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      
+      <form method="POST" action="/suggest">
+        <label for="discord">Discord:</label>
+        <input type="text" name="discord" placeholder="<%= user.username %>#<%=user.discriminator%>" disabled></input>
+        
+         <label for="subject">Message:</label>
+    <textarea type="text" name="suggest" placeholder="Message..." style="height:200px" id="suggest" required/></textarea>
+      <button type="submit">Send</button>
+      </form>
+      
+    </div>
+  </div>
+  </div>
+
+</body>
+</html>
+<!-- 
+<script>
+    function sendMessage() {
+      var a = document.getElementById("test").value;
+      if(!a) {
+        alert("You not put Message")
+      }
+      
+      var request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/717370776797446254/xspvKcdGDPblO3MxKf80gWDZa5mX9tBjm9awcv6KZ3tRc4ZoifiO-wgZPI9R4qXKphtL");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      var params = {
+        "username": "<%= user.username %>#<%=user.discriminator%>",
+        "avatar_URL": `https://cdn.discordapp.com/avatars/656097557751005184/4649fa658cf861ebabbf6d281c3c3b48.webp`,
+        "content": a
+      }
+
+      request.send(JSON.stringify(params));
+    }
+  </script>-->
+
+<style>
+  h3 {
+    text-align: center;
+  }
+  
+  h2 {
+    text-align: center;
+    font-family: Serif;
+  }
+  body {
+    background:#f2f2f2;
+  }
+  
+  input[type=text], select, textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */  
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+/*  
+  textarea:hover{
+width: 100%; /* Full width 
+  padding: 12px; /* Some padding   
+  border: 1px solid #ccc; /* Gray border 
+  box-shadow:0px 1px 6px 0px black;
+    border-radius: 4px; /* Rounded borders 
+  box-sizing: border-box; /* Make sure that padding and width stays in place 
+  margin-top: 6px; /* Add a top margin 
+  }*/
+  
+  button {
+  background-color: #ffffff;
+  border: 1px solid black;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+button:hover {
+  background-color:grey;
+  }
+  
+  .panel-body{
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+</style>

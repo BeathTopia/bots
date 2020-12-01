@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>EVENT | GROWBOT</title>
+  <meta charset="utf-8">
+  <meta name="og:title" content="EVENT | GROWBOT">
+  <meta name="og:description" cpntent="NEW EVENT GROWBOT">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:site_name" content="Growtopia-bots EVENT">
+  
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script data-ad-client="ca-pub-5902686510993379" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" href="<%= client.users.cache.get(user.id).displayAvatarURL() %>">
+</head>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="/"><%= user.username %></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/suggest">Suggest for bot</a></li>
+        <li><a href="/inventory">Inventory</a></li>
+        <li><a href="/server">Server List</a></li>
+        <li><a href="<%= user ? "/logout" : "/login" %>"><%= user ? user.username+"#"+user.discriminator + " (logout)" : "Login" %></a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  
+  <body>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-body">
+        
+        <input type='text' id='soal' disabled>
+        <input type='text' id='jawaban' placeholder='Enter your answer'>
+        
+        <button type='submit'>
+          Send!
+        </button>
+        
+      <script>
+        let soal_1 = Math.floor(Math.random() * 100)+1;
+        let soal_2 = Math.floor(Math.random() * 100)+1;
+        
+        let operasi = ['*', '-', '/', '+']
+        let randop = Math.floor((Math.random() * operasi.length))
+        let perhitungan = operasi[randop];
+        
+        let jawaban = document.getElementById('jawaban').value;
+  
+        document.getElementById('soal').innerHTML = `${soal_1} ${perhitungan} ${soal_2}`
+        
+        while(jawaban!==soal_1 && jawaban!==soal_2)
+  
+          if(jawaban === soal_1+perhitungan+soal_2) {
+            document.getElementById('soal').innerHTML = `correct :)`
+          }else {
+            document.getElementById('soal').innerHTML = `your answer is wrong, the answer is= ${soal_1+perhitungan+soal_2}`
+          }
+      </script>
+      
+    </div>
+  </div>
+  </div>
+
+</body>
+</html>
+
+<style>
+  h3 {
+    text-align: center;
+  }
+  
+  h2 {
+    text-align: center;
+    font-family: Serif;
+  }
+  body {
+    background:#262626;
+  }
+  
+</style>

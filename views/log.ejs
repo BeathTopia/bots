@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Checking Email | <%= client.user.username %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script data-ad-client="ca-pub-5902686510993379" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+   <script src="https://www.google.com/recaptcha/api.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" href="<%= client.user.displayAvatarURL() %>">
+</head>
+
+<!--<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="/"><%= client.user.username %></a>
+    </div>
+  </div>
+  </nav>-->
+  
+  <body>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      
+      <h4>Check your email and discord name</h4>
+      <label for="email">Email:</label>
+      <input type="text" name="email" placeholder="<%= user.email %>" disabled></input>
+    <label for="discord">Discord:</label>
+      <input type="text" name="discord" placeholder="<%= user.username + "#" + user.discriminator%>" disabled></input>
+  <button type="button" onclick="yes()">Next</button>
+  
+    </div>
+  </div>
+  </div>
+
+</body>
+</html>
+
+<script>
+  function yes() {
+    window.location.href= "/"
+  }
+</script>
+
+<style>
+  button {
+  background-color:black; /* #4CAF50; /* Green */
+  border: none;
+  border-radius: 7%;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+  
+  h3 {
+    text-align: center;
+  }
+  
+  h2 {
+    text-align: center;
+    font-family: Serif;
+  }
+  body {
+    background:#262626;
+  }
+  
+  * {box-sizing: border-box}
+
+/* Full-width input fields */
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+</style>
