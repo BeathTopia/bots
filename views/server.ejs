@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SERVER LIST | <%= req.user.username %></title>
+  <link rel="shortcut icon" href="<%=bot.user.cache.get(req.user.id).displayAvatarURL()%>">
+  <meta charset="utf-8">
+  <meta name="og:title" content="SERVER LIST | <%=req..user.username%>">
+  <meta name="og:description" content="Growtopia List Server">
+  <meta name="og:image" content="<%= bot.user.displayAvatarURL()%>">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:site_name" content="Growtopia-bots">
+  
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script data-ad-client="ca-pub-5902686510993379" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="/"><%= bot.user.username %></a>
+    </div>
+  <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="<%= user ? "/logout" : "/login" %>"><%= user ? user.username+"#"+user.discriminator + " (logout)" : "Login" %></a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <body>
+    
+    <h3>SERVER LIST</h3>
+    <br>
+
+    <div class="container">
+      <%- a.map(x => `
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <center><img src="${bot.guilds.cache.get(x.id).iconURL()}" style="border:5px solid blue; border-radius:58%;"></center><br>
+          
+          <h4 class="font-weight-bold mt-4 mb-2">Name: ${bot.guilds.cache.get(x.id).name}</h4>
+          <h4 class="font-weight-bold mt-4 mb-2">Member: ${bot.guilds.cache.get(x.id).memberCount} Users!</h4>
+          <h4 class="font-weight-bold mt-4 mb-2">Owner: ${bot.guilds.cache.get(x.id).owner.user.tag}</h4>
+          <center><button class="btn warning" type="button" onclick="window.location.href='${x.invite}'">Join Server!</a></button></center>
+        </div>
+        `).join(' ')
+%>
+      </div>
+    </div>
+  
+<style>
+  h1 {
+    color: white;
+    text-align: center;
+    font-family:bold;
+  }
+  
+  h4 {
+    text-align: center;
+    font-family: bold;
+  }
+
+  
+  h3 {
+    text-align: center;
+    color:white;
+  }
+  
+  h2 {
+    text-align: center;
+    font-family: Serif;
+  }
+  body {
+    background:#262626;
+  }
+</style>
+<style>
+  .btn {
+  border: 2px solid black;
+  background-color:transparent;
+  color:black;
+  border-radius: 10px;
+  padding: 14px 80px;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+  .warning {
+  border-color:black;
+  color:black;
+}
+
+/*.warning:hover {
+  background:grey;
+  color: white;
+}*/
+</style>-->

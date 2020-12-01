@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Shop | <%= user.username %></title>
+  <meta charset="utf-8">
+  <meta name="og:title" content="SHOP | <%=client.user.username%>">
+  <meta name="og:description" cpntent="BUY ITEM HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:site_name" content="Growtopia-bots">
+  
+  
+  <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script data-ad-client="ca-pub-5902686510993379" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" href="<%= client.users.cache.get(user.id).displayAvatarURL() %>">
+</head>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="/">Shop</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li><a href="/suggest"><span class="glyphicon glyphicon-comment"></span> Suggestions</a></li>
+        <li class='active'><a href="/shop"><span class='glyphicon glyphicon-shopping-cart'></span> Shop</a></li>
+        <li><a href="<%= user ? "/logout" : "/login" %>"><span class="glyphicon glyphicon-log-in"></span> <%= user ? "Logout" : "Login" %></a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  
+  <body>
+    
+  <div class='container'>
+    <div class='panel panel-default'>
+      <div class='panel-body'>
+        <center><h4>SHOP WORLD LOCK > GEMS</h4></center>
+        <center><h4>5wl/1k gems</h4></center>
+        
+        <form action='/buy' method='POST'>
+          
+        <label for='totalwl'>Total world lock</label>
+        <input type='text' id='totalwl' name='totalwl' value='<%= db.fetch(`wl_${req.user.id}`) || 0%>' disabled>
+        
+        <label for='wl'>World Lock:</label>
+          <input type='text' id='wl' name='wl' placeholder='Example: 5 and will get 1.000 gems'>
+        
+  <button id='tests'>Buy!</button>
+        </form>
+          </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+<!--<script>
+if(isNaN(document.getElementById('wl').value)) {
+  swal('Invalid number')
+  }
+</script>-->
+
+<style>
+  h3 {
+    text-align: center;
+  }
+  
+  h2 {
+    text-align: center;
+    font-family: Serif;
+  }
+  body {
+    background:#f2f2f2;
+  }
+
+  .panel-body{
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+  }
+  
+  input[type=text], select, textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */  
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+  
+button {
+  background-color: #ffffff;
+  border: 1px solid black;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+button:hover {
+  background-color:grey;
+}
+  </style>
